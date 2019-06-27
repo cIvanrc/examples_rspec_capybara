@@ -1,0 +1,6 @@
+---
+name: test_app2 
+
+environment:
+  - GITHUB_TOKEN: 299917439461a8a099f0669ece3b1bd998b6b87c
+  - HEROKU_API_KEY: ff6413af-a172-473c-8230-198e28b50415
