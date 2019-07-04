@@ -48,6 +48,9 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "rspec-rails", "~> 3.8"
   gem "ffaker"
+  gem 'httparty'
+  gem 'webmock'
+  gem 'vcr'
 
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", ">= 2.15", "< 4.0"

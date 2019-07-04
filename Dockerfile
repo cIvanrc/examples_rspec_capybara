@@ -10,6 +10,7 @@ FROM ruby:2.6.3-slim-stretch AS runtime
 # https://www.speedshop.co/2017/12/04/malloc-doubles-ruby-memory.html
 ENV MALLOC_ARENA_MAX="2"
 
+RUN useradd -g root -u 1000 username
 # Step 3: We'll set '/usr/src' path as the working directory:
 # NOTE: This is a Linux "standard" practice - see:
 # - http://www.pathname.com/fhs/2.2/

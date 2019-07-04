@@ -25,6 +25,9 @@ services:
       context: .
       dockerfile: Dockerfile
       target: development
+      args:
+      - DEVELOPER_UID=${UID:-1000}
+      - DEVELOPER_USER=${USER:-you}
     image: icalialabs/test_app2:development
     entrypoint: /usr/src/bin/dev-entrypoint.sh
     volumes:
