@@ -32,6 +32,8 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  # devise
+  config.include Devise::Test::ControllerHelpers, type: :controller
 
   Shoulda::Matchers.configure do |config|
     config.integrate do |with|
@@ -66,4 +68,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  #
 end
