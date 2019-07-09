@@ -20,6 +20,7 @@ gem "normalize-rails"
 gem "alom"
 gem "autoprefixer-rails"
 
+gem 'devise'
 
 group :development do
   gem "web-console", ">= 3.3.0"
