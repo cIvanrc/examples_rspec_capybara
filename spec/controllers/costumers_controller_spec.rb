@@ -33,6 +33,14 @@ RSpec.describe CostumersController, type: :controller do
     end
   end
 
+  it '#create costumer needs address presence' do
+    customer_params = attributes_for(:costumer, address: nil)
+    sign_in @member
+    expect{
+      post :create, params: { costumer: customer_params }
+    }.to_not change(Costumer, :count)
+  end
+
   it '#create' do
     customer_params = attributes_for(:costumer)
     sign_in @member
@@ -52,7 +60,6 @@ RSpec.describe CostumersController, type: :controller do
     customer_params = attributes_for(:costumer)
     sign_in @member
     post :create, format: :json, params: { costumer: customer_params }
-    p response
     expect(response.content_type).to match(/html/)
   end
 end
