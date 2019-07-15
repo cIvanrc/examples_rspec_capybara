@@ -36,7 +36,8 @@ class CostumersController < ApplicationController
   # PATCH/PUT /costumers/1
   def update
     if @costumer.update(costumer_params)
-      redirect_to @costumer, notice: 'Costumer was successfully updated.'
+      # redirect_to @costumer, notice: 'Costumer was successfully updated.'
+      render json: @costumer, status: :updated
     else
       render :edit
     end

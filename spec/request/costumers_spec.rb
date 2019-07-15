@@ -33,5 +33,28 @@ RSpec.describe "Customers", type: :request do
         email: customer_params[:email]
       )
     end
+
+    it 'update - JSON' do
+      member = create(:member)
+      login_as(member, scope: :member)
+
+      headers = { "ACCEPT" => "application/json" }
+
+      costumer = Costumer.first
+      costumer.name += " - updated"
+
+      put "/costumers/#{costumer.id}",
+        params: { costumer: costumer.attributes },
+        headers: headers
+
+      expect(response.body).to include_json(
+        id: /\d/,
+        name: costumer[:name],
+        email: costumer[:email]
+      )
+      
+    end
   end
 end
+
+
