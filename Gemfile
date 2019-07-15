@@ -41,6 +41,7 @@ group :test do
   gem "simplecov-console", "~> 0.4.2", require: false
   gem "simplecov-json", require: false
   gem "simplecov-reporter", require: false
+
 end
 
 group :development, :test do
@@ -53,6 +54,7 @@ group :development, :test do
   gem 'webmock'
   gem 'vcr'
   gem 'rails-controller-testing'
+  gem 'rspec-json_expectations'
 
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", ">= 2.15", "< 4.0"

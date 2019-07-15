@@ -5,6 +5,7 @@ class CostumersController < ApplicationController
   # GET /costumers
   def index
     @costumers = Costumer.all
+    render json: @costumers
   end
 
   # GET /costumers/1
@@ -25,7 +26,8 @@ class CostumersController < ApplicationController
     @costumer = Costumer.new(costumer_params)
 
     if @costumer.save
-      redirect_to @costumer, notice: 'Costumer was successfully created.'
+      # redirect_to @costumer, notice: 'Costumer was successfully created.'
+      render json: @costumer,status: :created
     else
       render :new
     end

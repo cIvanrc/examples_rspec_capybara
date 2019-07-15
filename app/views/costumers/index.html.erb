@@ -29,3 +29,19 @@
 <br>
 
 <%= link_to 'New Costumer', new_costumer_path %>
+
+
+<a href="#" id="my-link" target="_blank">Add Message</a>
+<div id="my-div"></div>
+
+
+<script charset="utf-8">
+  let link = document.querySelector("#my-link")
+
+  link.addEventListener('click', function(e){
+    e.preventDefault()
+    setTimeout(function(){
+      document.querySelector('#my-div').innerHTML = "<h1>Yes!</h1>"
+    }, 100)
+  }, false)
+</script>
