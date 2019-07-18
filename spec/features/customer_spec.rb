@@ -38,4 +38,5 @@ RSpec.feature "Customers", type: :feature do
     
     expect(page).to have_content('Costumer was successfully created.')
   end
+
 end

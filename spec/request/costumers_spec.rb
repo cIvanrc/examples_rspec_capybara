@@ -11,7 +11,7 @@ RSpec.describe "Customers", type: :request do
     it 'response json' do
       get costumers_path
       expect(response.body).to include_json([
-        name: "test" 
+        name: "Juan Johns" 
       ])
     end
 
@@ -52,7 +52,25 @@ RSpec.describe "Customers", type: :request do
         name: costumer[:name],
         email: costumer[:email]
       )
-      
+    end
+
+    it 'destroy - JSON' do
+      member = create(:member)
+      login_as(member, scope: :member)
+
+      headers = { "ACCEPT" => "application/json" }
+
+      costumer = Costumer.first
+
+      expect{
+        delete "/costumers/#{costumer.id}",
+        headers: headers
+      }.to change(Costumer, :count).by(-1)
+    end
+
+    it 'JSON Schema' do
+      get '/costumers/1'
+      expect(response).to match_response_schema("customer")
     end
   end
 end

@@ -41,6 +41,7 @@ group :test do
   gem "simplecov-console", "~> 0.4.2", require: false
   gem "simplecov-json", require: false
   gem "simplecov-reporter", require: false
+  gem "json_matchers"
 
 end
 
