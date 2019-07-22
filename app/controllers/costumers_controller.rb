@@ -26,8 +26,8 @@ class CostumersController < ApplicationController
     @costumer = Costumer.new(costumer_params)
 
     if @costumer.save
-      # redirect_to @costumer, notice: 'Costumer was successfully created.'
-      render json: @costumer,status: :created
+      redirect_to @costumer, notice: 'Customer created successfully'
+      # render json: @costumer,status: :created
     else
       render :new
     end
