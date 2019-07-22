@@ -37,4 +37,25 @@ RSpec.feature "Customers", type: :feature do
     expect(page).to have_content("Customer created successfully")
     expect(Costumer.last.name).to eq(customer_name)
   end
+
+  scenario "sad path" do
+    member = create(:member)
+    login_as(member, :scope => :member)
+    visit(new_costumer_path)
+    click_on('Create Customer')
+
+    expect(page).to have_content("can't be blank")
+  end
+
+  context '#show' do
+    scenario "display customer" do
+      member = create(:member)
+      login_as(member, :scope => :member)
+
+      customer = create(:costumer)
+      visit(costumer_path(customer.id))
+
+      expect(page).to have_content(customer.name)
+    end
+  end
 end
