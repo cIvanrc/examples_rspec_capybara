@@ -5,7 +5,7 @@ class CostumersController < ApplicationController
   # GET /costumers
   def index
     @costumers = Costumer.all
-    render json: @costumers
+    # render json: @costumers
   end
 
   # GET /costumers/1

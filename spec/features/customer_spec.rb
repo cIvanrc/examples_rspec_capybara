@@ -1,42 +1,23 @@
 require 'rails_helper'
 
 RSpec.feature "Customers", type: :feature do
-    let(:new_customer_form) { NewCustomerForm.new }
-
-  it 'visit index page' do
-    visit(costumers_path)
-    expect(page).to have_current_path(costumers_path)
-  end
-  
-  it 'ajax' do
-    visit(costumers_path)
-    click_link('Add Message')
-    # print page.html
-    # expect(page).to have_content('Yes!')
+  scenario "Check customer's link" do
+    visit(root_path)
+    expect(page).to have_link("Go to Customers")
   end
 
-  it 'create a customer' do
+  scenario "Check link to new customer" do
+    visit(root_path)
+    click_link("Go to Customers")
+    expect(page).to have_content("Listing Customers")
+    expect(page).to have_link("New Customer")
+  end
+
+  scenario "Check new customer form" do
     member = create(:member)
     login_as(member, :scope => :member)
-    visit(new_costumer_path)
-
-    fill_in("Name", with: FFaker::Name.name)
-    fill_in("Email", with: FFaker::Internet.email)
-    fill_in("Address", with: FFaker::Address.street_address)
-
-    click_button('Create Costumer')
-
-    expect(page).to have_content('Costumer was successfully created.')
+    visit(costumers_path)
+    click_link("New Customer")
+    expect(page).to have_content("New Customer Form")
   end
-
-  it 'Create a customer - Page Object Pattern' do
-    new_customer_form.login.visit_page.fill_in_with(
-      name: FFaker::Name.name,
-      email: FFaker::Internet.email,
-      address: FFaker::Address.street_address
-    ).submit
-    
-    expect(page).to have_content('Costumer was successfully created.')
-  end
-
 end
