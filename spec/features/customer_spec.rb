@@ -58,4 +58,14 @@ RSpec.feature "Customers", type: :feature do
       expect(page).to have_content(customer.name)
     end
   end
+
+  context '#index' do
+    scenario "display customers" do
+      customer1 = create(:costumer)
+      customer2 = create(:costumer)
+
+      visit(costumers_path)
+      expect(page).to have_content(customer1.name).and have_content(customer2.name)
+    end
+  end
 end
