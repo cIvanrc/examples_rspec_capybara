@@ -67,6 +67,6 @@ RSpec.describe Costumer, type: :model do
 
 
   context 'on create' do
-    it { expect { create(:costumer) }.to change { Costumer.all.size }.by(1) }
+    it { expect { create(:c) }.to change { Costumer.all.size }.by(1) }
   end
 end
