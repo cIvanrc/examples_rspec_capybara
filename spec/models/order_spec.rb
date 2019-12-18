@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
-  context 'message' do
+  context 'new context' do
     it 'it have a order' do
       order = create(:order)
       expect(order.costumer).to be_kind_of(Costumer)
