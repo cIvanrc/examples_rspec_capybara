@@ -22,4 +22,5 @@ RSpec.describe Order, type: :model do
     costumer = create(:costumer_with_orders)
     expect(costumer.orders.count).to eq(3)
   end
+
 end
