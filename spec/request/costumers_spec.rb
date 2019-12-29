@@ -7,19 +7,16 @@ RSpec.describe "Customers", type: :request do
       get costumers_path
       expect(response).to have_http_status(200)
     end
-
     it 'response json' do
-      get costumers_path
-      expect(response.body).to include_json([
-        name: "Juan Johns" 
-      ])
+      get costumers_path, headers: { accept: 'application/json' }
+      expect(response.header['Content-Type']).to match 'application/json'
     end
 
     it 'create - Json' do
       member = create(:member)
       login_as(member, scope: :member)
 
-      headers = { "ACCEPT" => "application/json" }
+      headers = { accept: "application/json" }
 
       customer_params = attributes_for(:costumer)
 
@@ -28,7 +25,6 @@ RSpec.describe "Customers", type: :request do
         headers: headers
 
       expect(response.body).to include_json(
-        id: /\d/,
         name: customer_params[:name],
         email: customer_params[:email]
       )
@@ -69,7 +65,7 @@ RSpec.describe "Customers", type: :request do
     end
 
     it 'JSON Schema' do
-      get '/costumers/1'
+      get '/costumers/1', headers: { accept: 'application/json' }
       expect(response).to match_response_schema("customer")
     end
   end

@@ -53,13 +53,13 @@ RSpec.describe CostumersController, type: :controller do
     customer_params = attributes_for(:costumer)
     sign_in @member
     post :create, params: { costumer: customer_params }
-    expect(flash[:notice]).to match(/successfully created/)
+    expect(flash[:notice]).to match(/created successfully/)
   end
 
   it 'content-type' do
     customer_params = attributes_for(:costumer)
     sign_in @member
-    post :create, format: :json, params: { costumer: customer_params }
+    post :create, params: { costumer: customer_params }
     expect(response.content_type).to match(/html/)
   end
 end
