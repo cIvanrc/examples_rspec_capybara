@@ -9,9 +9,7 @@ RSpec.describe "Customers", type: :request do
     end
     it 'response json' do
       get costumers_path, headers: { accept: 'application/json' }
-      expect(response.body).to include_json([
-        name: "Vannesa Kertzmann" 
-      ])
+      expect(response.header['Content-Type']).to match 'application/json'
     end
 
     it 'create - Json' do

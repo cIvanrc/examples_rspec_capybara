@@ -5,6 +5,13 @@ require 'webmock/rspec'
 require 'json_matchers/rspec'
 
 
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+  config.ignore_localhost = true
+end
+
 Capybara.default_max_wait_time = 5
 
 
